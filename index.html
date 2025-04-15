@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhra K Dubey | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\mu-fav-ico.png" type="image/x-icon">
+
+    <style>
+        :root {
+            --primary: #00ff00;
+            --secondary: #ffcc00;
+            --dark: #121212;
+            --light: #ffffff;
+            --transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .loader-text {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 15%;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(0, 255, 0, 0.2);
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .shape-2 {
+            bottom: 20%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(255, 204, 0, 0.15);
+            animation: float 12s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(40px, -40px);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.2s;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.4s;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 1s ease 1.5s;
+        }
+
+        .scroll-text {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .scroll-icon {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--light);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: var(--light);
+            border-radius: 50%;
+            left: 50%;
+            top: 10px;
+            transform: translateX(-50%);
+            animation: scrollDown 1.5s infinite;
+        }
+
+        @keyframes scrollDown {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 15px);
+            }
+        }
+
+        .links-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .link-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .link-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .link-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .link-card:hover .link-icon {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .link-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .link-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .link-button:hover::before {
+            left: 100%;
+        }
+
+        .cursor {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: transform 0.1s;
+            display: none;
+        }
+
+        .cursor-follower {
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .cursor, .cursor-follower {
+                display: block;
+            }
+        }
+
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background-color: var(--primary);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .carousel-section {
+            padding: 50px 0;
+            background-color: rgba(255, 255, 255, 0.05);
+            margin: 50px 0;
+        }
+
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide:hover .carousel-caption {
+            transform: translateY(0);
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .decision-section {
+            text-align: center;
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .decision-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--secondary);
+        }
+
+        .decision-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .decision-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            color: var(--dark);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            transform: scale(1);
+        }
+
+        .decision-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0) rotateZ(0); opacity: 1; }
+            100% { transform: translateY(1000px) rotateZ(720deg); opacity: 0; }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .confetti:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary);
+            transform-origin: center;
+        }
+
+        .profile-section {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            margin: 0 auto 30px;
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.5);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-photo:hover img {
+            transform: scale(1.1);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .profile-tagline {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-text">Loading Experience</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-bg">
+                <div class="hero-shape shape-1"></div>
+                <div class="hero-shape shape-2"></div>
+            </div>
+            <div class="hero-content">
+                <p class="hero-subtitle">Welcome to my world</p>
+                <h1 class="hero-title">Hey Masters's Union, <br>I am <span class="highlight">Abhra K Dubey</span></h1>
+                <p class="hero-description">This website is specially made for you. If this doesn't convince you, I don't know what will. Explore my work, experience, and passions below.</p>
+            </div>
+            <div class="scroll-indicator">
+                <span class="scroll-text">Scroll down</span>
+                <div class="scroll-icon">
+                    <span class="scroll-dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="links-section">
+            <h2 class="section-title">Check Out My Work</h2>
+            <div class="links-grid">
+                <div class="link-card" data-delay="0">
+                    <div class="link-icon">🏆</div>
+                    <h3 class="link-title">Top 4 in India: Sony Liv Quizzer of the Year</h3>
+                    <p class="link-description">Outranked 125,000+ teams on India's biggest televised quiz show, hosted by Siddhartha Basu. Featured on national TV and a 177M-subscriber YouTube channel.</p>
+                    <a href="https://youtu.be/CfzTdyiwvvA?t=577"  target="_blank" class="link-button">Watch Highlights</a>
+                </div>
+                <div class="link-card" data-delay="100">
+                    <div class="link-icon">⚓</div>
+                    <h3 class="link-title">G20 Indian Navy Quiz Finalist (2×)</h3>
+                    <p class="link-description">Top 2 among 30,000+ participants. Competed aboard INS Vikramaditya and at iconic landmarks. Won ₹3L+ prizes and a 10-day naval tour.</p>
+                    <a href="https://www.youtube.com/watch?v=4sEdhS2WAKY" target="_blank" class="link-button">Explore Journey</a>
+                </div>
+                <div class="link-card" data-delay="200">
+                    <div class="link-icon">📈</div>
+                    <h3 class="link-title">Scaled Health Channel to 150K+ Subs</h3>
+                    <p class="link-description">Managed a top South Asian homeopathic YouTube channel (10M+ views), securing $4K+ sponsorships and expanding patient services to 2,300+.</p>
+                    <a href="https://youtube.com/@DrNupurDubey" target="_blank"class="link-button">Visit Channel</a>
+                </div>
+                <div class="link-card" data-delay="300">
+                    <div class="link-icon">💻</div>
+                    <h3 class="link-title">#1 in National Coding Competition</h3>
+                    <p class="link-description">Beat 52,000+ participants with an NLP app summarizing news in under 40 words. Awarded "Best Prototype" at Mumbai finals.</p>
+                    <a href="https://cognizance.netlify.app/" target="_blank" class="link-button">See Project</a>
+                </div>
+                <div class="link-card" data-delay="400">
+                    <div class="link-icon">🌍</div>
+                    <h3 class="link-title">Global Climate Olympiad Champion</h3>
+                    <p class="link-description">Secured International Rank 1 in a UN-aligned sustainability competition, showcasing expertise in climate action and clean energy.</p>
+                    <a href="https://media.licdn.com/dms/image/v2/D562DAQGlotUz2T66pw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1716315938530?e=1745348400&v=beta&t=syKS9zl4hYcN8NBx2_K5UbFNaOsOagnXqHi3mWhJULg" target="_blank" class="link-button">Learn More</a>
+                </div>
+                <div class="link-card" data-delay="700">
+                    <div class="link-icon">🩺</div>
+                    <h3 class="link-title">COVID-19 Resource Website</h3>
+                    <p class="link-description">Built CoviKnow to connect patients with oxygen/plasma donors during the pandemic, reaching 37K+ users and saving lives.</p>
+                    <a href="https://coviknoww.web.app/" target="_blank" class="link-button">Visit Site</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">♻️</div>
+                    <h3 class="link-title">Tech Lead @ High</h3>
+                    <p class="link-description">Building systems for sweatless, odorless shirts—bridging smart inventory, customer analytics, and ethical sourcing. Paid full-time role with Sankalp Bharani (MU'28); pitched to Swati Ganeti.</p>
+                    <a href="" target="_blank" class="link-button" style="cursor: not-allowed; opacity: 0.7;">Site Under Maintenance</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">🤖</div>
+                    <h3 class="link-title">Founder @ WasabiAI</h3>
+                    <p class="link-description">Led a 15-member nonprofit democratizing AI education across India—impacting 21,000+ students through workshops and bootcamps in underserved regions. Hosting India's largest AI case competition for high schoolers, backed by IIT Kanpur Incubation Cell and ex-Indian Oil CEO Mr. Rajeev Sikka.</p>
+                    <a href="https://www.linkedin.com/company/wasabi-ai/ target="_blank" class="link-button" target="_blank">View LinkedIn</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">🌍</div>
+                    <h3 class="link-title">Top Contributor @ Google Code-in</h3>
+                    <p class="link-description">One of the youngest top contributors in Google's open source contest for students. Contributed to 7+ renowned orgs like TensorFlow, Drupal, Wikimedia, and Fedora—completing 15 tasks via GitHub and gaining hands-on experience in real-world open source development.</p>
+                    <a href="https://media.licdn.com/dms/image/v2/D562DAQFo5c6t9ADXkg/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1719380132457?e=1745348400&v=beta&t=jEq-fC2GOj0lJKU4A6Iyt1giQ7jDTI1BAz7O0_-O3y0" target="_blank" class="link-button" target="_blank">View Certificate</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">🦈</div>
+                    <h3 class="link-title">Winners @ IIT-Madras Sharklet at Action</h3>
+                    <p class="link-description">National winners of a Shark Tank–inspired event by IIT-Madras' Shaastra Juniors. Evaluated innovative business ideas and pitched investment decisions, showcasing entrepreneurial insight and strategic thinking.</p>
+                    <a href="https://www.canva.com/design/DAFP1xXeK74/kvpvwY0Z3g2jjX8gOvWYNA/view?utm_content=DAFP1xXeK74&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha16ae2062d" class="link-button" target="_blank">View Pitch Deck</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">🌍</div>
+                    <h3 class="link-title">Catalyst for Change @ MU20</h3>
+                    <p class="link-description">Won the *Catalyst for Change* award at MU20 School of Opportunity for crafting a policy execution plan tackling real-world challenges in Kenya. Awarded a $350 cash prize and a 75% scholarship ($2,500) from Allen Global Studies.</p>
+                    <a href="https://www.canva.com/design/DAGeP48PXw8/W9lYYEAP-gPdpqDILfnepQ/view?utm_content=DAGeP48PXw8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5c7a6325fb" target="_blank" class="link-button" target="_blank">View Pitch</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">💻</div>
+                    <h3 class="link-title">Job Simulation @ JPMorgan Chase</h3>
+                    <p class="link-description">Completed a software engineering job simulation via Forage, where I built a live data feed graph using JPMorgan's open source library, Perspective. Gained hands-on experience with dev environments, trading systems, and open source contributions.</p>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/J.P.%20Morgan/R5iK7HMxJGBgaSbvk_J.P.%20Morgan_vaJhRKWonydZ8hv3i_1717705718323_completion_certificate.pdf"_blank" class="link-button" target="_blank">View Certificate</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">🚀</div>
+                    <h3 class="link-title">Tech & Entrepreneurship Intern @ ChildrenWhoCode</h3>
+                    <p class="link-description">Worked at a fast-growing EdTech startup making coding accessible for young minds. From June–July 2024, I contributed to product strategy, market research, and user engagement while gaining hands-on experience in the startup ecosystem.</p>
+                    <a href="https://drive.google.com/file/d/1xefqgKd6Ymw0MdBg3or6Brj1UDBiIbip/view?usp=sharing" target="_blank" class="link-button" target="_blank">View LOR</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">📊</div>
+                    <h3 class="link-title">Job Simulation @ Accenture</h3>
+                    <p class="link-description">Completed Accenture's Data Analytics & Visualization simulation on Forage. Gained practical experience working with Excel, data cleaning, and storytelling through analytics—simulating a real-world client project team experience.</p>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_vaJhRKWonydZ8hv3i_1717707351266_completion_certificate.pdf" target="_blank" class="link-button" target="_blank">View Certificate</a>
+                </div>
+                <div class="link-card" data-delay="800">
+                    <div class="link-icon">🎙️</div>
+                    <h3 class="link-title">Podcast Producer & Strategy Lead @ Mentlance</h3>
+                    <p class="link-description">Led podcast strategy for Gen-Z mental health platform Mentlance. Produced 10+ episodes reaching 9K+ listeners and launched a peer support network with over 1K students. Featured expert interviews on mental wellness and youth mental health.</p>
+                    <a href="https://drive.google.com/file/d/1vIZvOrkkgDJoKFvUBmlOVu178YX1d0C6/view?usp=sharing" target="_blank" class="link-button" target="_blank">View Certificate</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\3.png" alt="Technology">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\4.png" alt="Education">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\5.png"alt="Business">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\6.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\7.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\8.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\9.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\10.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\11.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\12.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\13.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\14.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\15.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\17.png" alt="Leadership">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\18.png" alt="Leadership">
+                    </div>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+
+        <section class="decision-section">
+            <h2 class="decision-title">Will Master's Union let Abhra in?</h2>
+            <div class="decision-buttons">
+                <button class="decision-btn" onclick="celebrate()">Yes yes - ofcourse</button>
+                <button class="decision-btn" onclick="celebrate()">Yes - 100% absolutely</button>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="D:\MY NEW PORTFOLIO\ABHRA\BILL PHOTOS\attachments\My Achievements\Abhra & Masters Union\Photos\abhra pic.jpeg"alt="Abhra K Dubey">
+                </div>
+                <h2 class="profile-name">Abhra K Dubey</h2>
+                <p class="profile-tagline">Innovator | Quizzer | Tech Enthusiast</p>
+            </div>
+        </section>
+
+        <footer>
+            <p class="footer-text">Designed & Developed with 💚 by Abhra K Dubey | 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom cursor
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(function() {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 50);
+            });
+            
+            document.addEventListener('mousedown', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(0.5)';
+            });
+            
+            document.addEventListener('mouseup', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+            
+            // Loader animation
+            const loaderProgress = document.querySelector('.loader-progress');
+            const loader = document.querySelector('.loader');
+            const container = document.querySelector('.container');
+            let progress = 0;
+            
+            const interval = setInterval(function() {
+                progress += Math.random() * 10;
+                
+                if (progress > 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    setTimeout(function() {
+                        loader.style.opacity = '0';
+                        container.style.opacity = '1';
+                        
+                        setTimeout(function() {
+                            loader.style.display = 'none';
+                            
+                            // Animate hero elements
+                            document.querySelector('.hero-subtitle').style.opacity = '1';
+                            document.querySelector('.hero-subtitle').style.transform = 'translateY(0)';
+                            
+                            setTimeout(function() {
+                                document.querySelector('.hero-title').style.opacity = '1';
+                                document.querySelector('.hero-title').style.transform = 'translateY(0)';
+                            }, 200);
+                            
+                            setTimeout(function() {
+                                document.querySelector('.hero-description').style.opacity = '1';
+                                document.querySelector('.hero-description').style.transform = 'translateY(0)';
+                            }, 400);
+                            
+                            setTimeout(function() {
+                                document.querySelector('.scroll-indicator').style.opacity = '1';
+                            }, 600);
+                            
+                        }, 500);
+                    }, 500);
+                }
+                
+                loaderProgress.style.width = progress + '%';
+            }, 100);
+            
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe section titles
+            document.querySelectorAll('.section-title').forEach(title => {
+                observer.observe(title);
+            });
+            
+            // Observe footer
+            observer.observe(document.querySelector('footer'));
+            
+            // Animate link cards with delay
+            const linkCards = document.querySelectorAll('.link-card');
+            const linksObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.getAttribute('data-delay');
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, delay);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            linkCards.forEach(card => {
+                linksObserver.observe(card);
+            });
+            
+            // Hover effect for cards
+            linkCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.borderColor = 'var(--secondary)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.borderColor = 'var(--primary)';
+                });
+            });
+            
+            // Parallax effect for shapes
+            window.addEventListener('mousemove', function(e) {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                document.querySelector('.shape-1').style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+                document.querySelector('.shape-2').style.transform = `translate(${-x * 30}px, ${-y * 30}px)`;
+            });
+
+            // Carousel functionality
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            let currentSlide = 0;
+            let slideInterval;
+
+            // Create dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            function updateDots() {
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                updateDots();
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                goToSlide(currentSlide);
+            }
+
+            // Start automatic slideshow
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 4000);
+            }
+
+            function resetSlideshow() {
+                clearInterval(slideInterval);
+                startSlideshow();
+            }
+
+            track.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            track.addEventListener('mouseleave', startSlideshow);
+
+            startSlideshow();
+
+            // Observe decision section
+            observer.observe(document.querySelector('.decision-section'));
+        });
+
+        // Confetti animation
+        function celebrate() {
+            const colors = ['#00ff00', '#ffcc00', '#ff00ff', '#00ffff', '#ff0000'];
+            const confettiCount = 150;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random position
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    
+                    // Random color
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.setProperty('--confetti-color', color);
+                    confetti.style.backgroundColor = color;
+                    
+                    // Random size
+                    const size = (Math.random() * 10) + 5;
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    
+                    // Random rotation and movement
+                    const angle = Math.random() * 360;
+                    const spread = Math.random() * 360;
+                    const velocity = 500 + Math.random() * 500;
+                    
+                    confetti.style.animation = `confetti ${velocity}ms ease-in forwards`;
+                    confetti.style.transform = `rotate(${angle}deg) translate(${spread}px)`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Clean up
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, velocity + 100);
+                }, i * 20);
+            }
+        }
+    </script>
+</body>
+</html>
